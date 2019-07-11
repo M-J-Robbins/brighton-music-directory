@@ -3,7 +3,7 @@
 
 /*** Code for GET request for JSON file ***/
 // Location of JSON file
-var galleryURL = 'https://spreadsheets.google.com/feeds/list/1n7KTF8uQKnB5r9_UOct9_UGGfGIDZaw4XIjfkc-ICNU/odimgem/public/values?alt=json';
+var jsonURL = 'https://spreadsheets.google.com/feeds/list/1n7KTF8uQKnB5r9_UOct9_UGGfGIDZaw4XIjfkc-ICNU/odimgem/public/values?alt=json';
 
 // Create an XMLHttpRequest
 var jsonRequest = new XMLHttpRequest();
@@ -16,15 +16,15 @@ function processJSON(request) {
 request.onreadystatechange = function(data) {
     if (request.readyState === 4) {
       if (request.status === 200) {
-        var gallery = JSON.parse(request.responseText);
-        var imagesElement = document.getElementById("images");
-        var imagesHTML = '';
-        for (var i=0; i < gallery.resources.length; i++ ) {
-          imagesHTML += '<div>';
-          imagesHTML += 'hello world';         
-          imagesHTML += '</div>';
+        var json = JSON.parse(request.responseText);
+        var outputElement = document.getElementById("studios");
+        var outputHTML = '';
+        for (var i=0; i < json.resources.length; i++ ) {
+          outputHTML += '<div>';
+          outputHTML += feed.entry[i].title.$t;         
+          outputHTML += '</div>';
         }
-        imagesElement.innerHTML = imagesHTML;      
+        outputElement.innerHTML = outputHTML;      
       } else {
             // add error message to span         
             var err = request.statusText + ' (' + request.status + ')';
@@ -43,5 +43,5 @@ function requestJSON(json) {
   
 window.onload = function() {
   console.log('event fired');
-  requestJSON(galleryURL);
+  requestJSON(jsonURL);
 };
