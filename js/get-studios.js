@@ -3,7 +3,8 @@
 
 /*** Code for GET request for JSON file ***/
 // Location of JSON file
-var jsonURL = 'spreadsheets.google.com/feeds/list/1n7KTF8uQKnB5r9_UOct9_UGGfGIDZaw4XIjfkc-ICNU/odimgem/public/values?alt=json';
+var jsonURL = 'https://spreadsheets.google.com/feeds/list/1n7KTF8uQKnB5r9_UOct9_UGGfGIDZaw4XIjfkc-ICNU/odimgem/public/values?alt=json';
+
 
 // Create an XMLHttpRequest
 var jsonRequest = new XMLHttpRequest();
